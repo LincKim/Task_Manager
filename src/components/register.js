@@ -1,58 +1,68 @@
 import React, { useState } from "react";
 
-function Register(props) {
+function Register() {
 
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-     
-    const handleSubmit =(e) =>{
-        e.preventdefault()
-    }
+    const[username, setUsername] = useState("")
+     const[email, setEmail] = useState("")
+     const[password,setPassword] = useState("")
 
+     const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    return (
-        <div className="login">
-        <form onClick={handleSubmit}className="registertwo">
+        const userData = {
+            username: username,
+            email: email,
+            password: password
+        };
 
-            <lebel>Name</lebel>
+        const response = await fetch('', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(userData)
+        });
 
-            <input value={name} 
-            onChange={(e)=>setName(e.target.value)} 
+        const data = await response.json();
+
+        console.log(data);
+     };
+
+    return ( 
+        <div>
+            <form onSubmit={handleSubmit} className="" >
+            <h1 className="">Sign Up</h1>
+            <div className="">
+            <label>username</label>
+            <input className=""
             type="text" 
-            htmlFor="name" 
-            placeholder="Full Name"
-            id="inputs" 
-            />
-            <lebel>Email</lebel>
-
-            <input 
-            value={email} 
-            onChange={(e)=>setEmail(e.target.value)} 
-            type="email" 
-            placeholder="email" 
-            id="email" 
-            name="inputs"
-            />
-
-            <lebel>Password</lebel>
-
-            <input 
-            value={password}
-            onChange={(e)=>setPassword(e.target.value)} 
-            type="password" 
-            placeholder="******" 
-            id="inputs"
-            />
-
-            <button id="buttons" type="submit">Register</button>
-
-        </form>
-
-        <button  onClick={()=>props.onFormSwitch("Login")}>Already have an account? login</button>
-
+            placeholder="Enter username" 
+            value={username} onChange={(e) => setUsername(e.target.value)} 
+            required
+            /> 
+            </div>
+            <div className="">
+            <label>email</label>
+            <input className="" 
+               type="text" 
+               placeholder="Enter email" 
+               value={email} onChange={(e) => setEmail(e.target.value)} 
+               required
+            /> 
+            </div>
+            <div className="">
+            <label>password</label>
+            <input className="" 
+               type="password" 
+               placeholder="Enter password" 
+               value={password} onChange={(e) => setPassword(e.target.value)} 
+               required
+            /> 
+            </div>
+            <button type="submit">sign up</button>
+         </form>
         </div>
-    )
+     );
 }
 
 export default Register;
