@@ -6,8 +6,8 @@ function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async (event) => {
-      event.preventDefault();
+  const handleLogin = async (e) => {
+      e.preventDefault();
       const response = await fetch('', {
           method: 'POST',
           headers: {
@@ -34,7 +34,7 @@ function Login(props) {
              required
           /> 
           </div>
-          <div className="w-1/2">
+          <div className="">
           <label>Password</label>
           <input className="" 
              type="password" 

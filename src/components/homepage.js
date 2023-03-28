@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./navbar";
-import TaskItem from "../task/TaskItem";
+import Item from "./item";
 import Create from "./create";
 import { AiOutlineLogout } from 'react-icons/ai';
 
@@ -15,7 +15,7 @@ function Home({handleLogout, user}){
 
 
     useEffect(()=>{
-        fetch("/todos")
+        fetch("")
         .then((r) => r.json())
         .then(setTasks)
     },[])
@@ -59,11 +59,6 @@ function Home({handleLogout, user}){
         .then(data=> setTasks(...tasks,data))
     }
    
-
-
-
-    
-
     return(
         <>
         <Navbar/>
@@ -78,23 +73,19 @@ function Home({handleLogout, user}){
                {/* contain a form to add a task */}
 
                <Create handleSubmit={handleSubmit}/>
-            
-
-
-
 
             </div>
         </div>
 
 
-        <div className="container mt-3" id="taskList">
+        <div className="" id="taskList">
             <center>
                 <h4>{`${user.name} Tasks`}</h4>
             </center>
             <div  className="row">
 
                 { tasks.length > 0 ? (
-                    tasks.map((task) => <TaskItem task={task} handleEdit={handleEdit}/>)) : null }
+                    tasks.map((task) => <Item task={task} handleEdit={handleEdit}/>)) : null }
 
                     
             </div> 
