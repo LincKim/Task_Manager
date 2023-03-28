@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../navbar/Navbar";
+import Navbar from "./navbar";
 import TaskItem from "../task/TaskItem";
 import Create from "./create";
 import { AiOutlineLogout } from 'react-icons/ai';
@@ -23,7 +23,7 @@ function Home({handleLogout, user}){
     function handleSubmit(e){
         e.preventDefault();
         const user_id = sessionStorage.getItem('user_id')
-        fetch('/todos',{
+        fetch('',{
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -43,7 +43,7 @@ function Home({handleLogout, user}){
     function handleEdit(e){
         e.preventDefault();
         const user_id = sessionStorage.getItem('user_id')
-        fetch('/todos',{
+        fetch('',{
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -70,10 +70,10 @@ function Home({handleLogout, user}){
         <h3 id="logout" onClick={handleLogout}  ><AiOutlineLogout/></h3>
 
 
-        <div className="container  mt-4" id="selection">
+        <div className="" id="selection">
                 
             <div className="row">
-                <center><h2 style={{color:"red"}} id="armySelect"> </h2></center>
+                <center><h2 id="armySelect"> </h2></center>
             
                {/* contain a form to add a task */}
 
