@@ -6,7 +6,7 @@ import { AiOutlineLogout } from 'react-icons/ai';
 
 
 
-function Home({handleLogout, user}){
+function Homepage({handleLogout, user}){
 
     const [tasks, setTasks] = useState([])
     const [title, setTitle] = useState('')
@@ -94,4 +94,4 @@ function Home({handleLogout, user}){
     )
 }
 
-export default Home;
+export default Homepage;
